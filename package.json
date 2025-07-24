@@ -9,6 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^6.5.3",
+    "@authing/native-js-ui-components": "^4.5.44",
     "astro": "^5.12.3"
-  }
+  },
+  "packageManager": "pnpm@9.15.1"
 }
