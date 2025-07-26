@@ -1,0 +1,25 @@
+---
+import "@authing/native-js-ui-components/lib/index.min.css";
+
+// import { generateSafeId } from "../utils/generateSafeId";
+
+// const safeId = generateSafeId();
+
+const { ...props } = Astro.props;
+---
+
+<button {...props}>
+  <slot>Sign in</slot>
+</button>
+
+<script>
+  import { Guard } from "@authing/native-js-ui-components";
+
+  const appId = "688087989d9e8f80599b9bd5";
+
+  const guardInstance = new Guard({ appId });
+
+  guardInstance.on("login", (userInfo) => {
+    console.log(userInfo);
+  });
+</script>

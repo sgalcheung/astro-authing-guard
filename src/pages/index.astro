@@ -1,27 +1,30 @@
 ---
-import "@authing/native-js-ui-components/lib/index.min.css";
+import SignInButton from "../components/SignInButton.astro";
+import SiteLayout from "../layouts/SiteLayout.astro";
 ---
 
-<html lang="en">
-  <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
-    <meta name="generator" content={Astro.generator} />
-    <title>Astro</title>
-  </head>
-  <body>
-    <h1>Astro</h1>
-  </body>
-  <script>
-    import { Guard } from "@authing/native-js-ui-components";
-
-    const appId = "688087989d9e8f80599b9bd5";
-
-    const guardInstance = new Guard({ appId });
-
-    guardInstance.on("login", (userInfo) => {
-      console.log(userInfo);
-    });
-  </script>
-</html>
+<SiteLayout title="Clerk + Astro">
+  <div class="p-16 flex flex-col items-center">
+    <h1 class="text-4xl">Get Started With Clerk + Astro on Cloudflare</h1>
+    <div class="p-16 text-center flex-col flex gap-6">
+      <!-- <SignedOut>
+        <SignInButton
+          class="bg-linear-to-b from-gray-900 to-gray-700 rounded-md py-2 shadow outline-1 outline-gray-600"
+        />
+      </SignedOut>
+      <SignedIn>
+        <SignOutButton
+          class="bg-linear-to-b from-gray-900 to-gray-700 rounded-md py-2 shadow outline-1 outline-gray-600"
+        />
+      </SignedIn> -->
+      <SignInButton
+        class="bg-linear-to-b from-gray-900 to-gray-700 rounded-md py-2 shadow outline-1 outline-gray-600"
+      />
+      <p>Sign In with your Clerk account to try it out!</p>
+      <div>
+        <p>Test a <a href="/dashboard" class="underline">Protected Route</a></p>
+        <p>Test a <a href="/public" class="underline">Public Route</a></p>
+      </div>
+    </div>
+  </div>
+</SiteLayout>
