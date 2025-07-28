@@ -1,5 +1,5 @@
 // @ts-check
-import { defineConfig } from 'astro/config';
+import { defineConfig, envField } from 'astro/config';
 
 import netlify from '@astrojs/netlify';
 
@@ -10,6 +10,15 @@ export default defineConfig({
   adapter: netlify(),
 
   vite: {
-    plugins: [tailwindcss()]
-  }
+    plugins: [tailwindcss()],
+  },
+  env: {
+    schema: {
+      AUTHING_APP_ID: envField.string({
+        context: "client",
+        access: "public",
+        default: "688087989d9e8f80599b9bd5",
+      }),
+    },
+  },
 });

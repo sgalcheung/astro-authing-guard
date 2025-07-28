@@ -14,12 +14,13 @@ const { ...props } = Astro.props;
 
 <script>
   import { Guard } from "@authing/native-js-ui-components";
+  import { AUTHING_APP_ID } from "astro:env/client";
 
-  const appId = "688087989d9e8f80599b9bd5";
+  if (AUTHING_APP_ID) {
+    const guardInstance = new Guard({ appId: AUTHING_APP_ID });
 
-  const guardInstance = new Guard({ appId });
-
-  guardInstance.on("login", (userInfo) => {
-    console.log(userInfo);
-  });
+    guardInstance.on("login", (userInfo) => {
+      console.log(userInfo);
+    });
+  }
 </script>
